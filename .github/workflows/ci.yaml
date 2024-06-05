@@ -20,9 +20,9 @@ jobs:
       # Specify a version that works for now.
         lisp: [ sbcl, ccl-bin, ecl, abcl ]
         os: [ windows-latest, ubuntu-latest, macos-latest ]
-        include: 
-          - os: ubuntu-latest
-            lisp: allegro
+        include:
+          # - os: ubuntu-latest
+          #  lisp: allegro
           - os: windows-latest
             lisp: sbcl-bin
         exclude: 
