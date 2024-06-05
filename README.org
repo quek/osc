@@ -51,11 +51,11 @@ This implementation supports the [[https://opensoundcontrol.stanford.edu/spec-1_
 - data is encoded as =(vector (unsigned 8))= by =cl-osc=
 ** Platform support
 
-currently supported and/or tested OS and CL platforms (platform names from github CI)
+currently supported and/or tested OS and CL platforms (platform names from github CI & roswell)
 
-|         | ubuntu-latest | macos-latest | windows-latest |
-| sbcl    | 🟢            | 🟢           | 🟢             |
-| ccl-bin | 🟢            | 🟢           | 🟢             |
-| ecl     | 🟢            | 🟢           | ?              |
-| allegro | 🟢            | ?            | ?              |
-| other?  | ?             | ?            | ?              |
+|         | macos-latest     | ubuntu-latest | windows-latest |
+| sbcl    | 🟢               | 🟢            | 🟢             |
+| ccl-bin | 🟡 (x86_64 only) | 🟢            | 🟢             |
+| ecl     | 🟢               | 🟢            | ?              |
+| allegro | ?                | 🟡            | ?              |
+| other?  | ?                | ?             | ?              |
