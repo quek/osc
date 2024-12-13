@@ -107,7 +107,7 @@
       (write-to-vector #\,) ;; #(44)
       (dolist (x data)
         (typecase x
-          (integer (if (>= x 4294967296) (write-to-vector #\h) (write-to-vector #\i)))
+          (integer (write-to-vector (if (<= #x-80000000 x #x7FFFFFFF) #\i #\h)))
           (single-float (write-to-vector #\f))
           (double-float (write-to-vector #\d))
           (simple-string (write-to-vector #\s))
@@ -130,7 +130,7 @@
                  `(setf lump (cat lump (,f x)))))
       (dolist (x data)
         (typecase x
-          (integer (if (>= x 4294967296) (enc encode-int64) (enc encode-int32)))
+          (integer (if (<= #x-80000000 x #x7FFFFFFF) (enc encode-int32) (enc encode-int64)))
           (single-float (enc encode-float32))
           (double-float (enc encode-float64))
           (simple-string (enc encode-string))
@@ -201,7 +201,7 @@
                         result)
                   (setf acc (subseq acc 4)))
                  ((eq x (char-code #\h))
-                  (push (decode-uint64 (subseq acc 0 8))
+                  (push (decode-int64 (subseq acc 0 8))
                         result)
                   (setf acc (subseq acc 8)))
                  ((eq x (char-code #\f))
