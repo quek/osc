@@ -208,6 +208,10 @@
                   (push (decode-float32 (subseq acc 0 4))
                         result)
                   (setf acc (subseq acc 4)))
+                 ((eq x (char-code #\d))
+                  (push (decode-float64 (subseq acc 0 8))
+                        result)
+                  (setf acc (subseq acc 8)))
                  ((eq x (char-code #\s))
                   (let ((pointer (padded-length (position 0 acc))))
                     (push (decode-string
